@@ -43,3 +43,14 @@ group :development, :test do
   gem 'spring'
 end
 
+
+group :development do
+  # to detect N+1 sql queries
+  gem "bullet"
+  # do not show assets in log
+  gem "quiet_assets"
+  # for using vim inside console, just add to .irbrc
+  # require "irbtools"
+  #gem "irbtools"
+  gem "interactive_editor"
+end
