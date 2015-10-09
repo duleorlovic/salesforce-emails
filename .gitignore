@@ -15,3 +15,13 @@
 /log/*
 !/log/.keep
 /tmp
+# vim temp files
+*.swp
+*.swo
+# carrierwave upload files
+/public/uploads
+# gedit files
+*~
+# vagrant files
+.vagrant
+
