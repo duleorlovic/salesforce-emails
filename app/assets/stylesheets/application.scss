@@ -9,6 +9,11 @@
   article { @include span-columns(6); }
 }
 
+.row {
+  @include outer-container;
+  input { @include span-columns(6); }
+}
+
 .tables {
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;

@@ -15,13 +15,14 @@ Sincerely,
     if params[:new_field].present?
       def add( p, k, v)
         if v.class == Hash
-          if p.has_key?(k) && p[k].class == ActionController::Parameters
+          if p && p.has_key?(k) && p[k].class == ActionController::Parameters
             add( p[k], v.keys.first, v.values.first)
           else
-            p[k] = add( p, v.keys.first, v.values.first)
+            p[k] = add( {}, v.keys.first, v.values.first)
           end
         else
           p[k] = v
+          p
         end
       end
       last = params[:new_field_value]

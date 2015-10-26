@@ -8,8 +8,10 @@
       <% if v1.class == String %>
         <tr>
           <td>
-          <%= label_tag k1 %>
-        </td>
+            <strong>
+              <%= k1 %>
+            </strong>
+          </td>
         <td>
           <%= text_field_tag "object_data[#{k1}]", v1 %>
         </td>
@@ -17,18 +19,22 @@
       <% elsif v1.respond_to? :each %>
         <tr>
           <td>
-              <%= label_tag "#{k1}" %>
+            <strong>
+              <%= k1 %>
+            </strong>
           </td>
         <td>
         <table>
           <% v1.each do |k2, v2| %>
             <tr>
               <td>
-              <%= label_tag "#{k2}" %>
-            </td>
-            <td>
-              <%= text_field_tag "object_data[#{k1}][#{k2}]", v2 %>
-            </td>
+                <strong>
+                  <%= k2 %>
+                </strong>
+              </td>
+              <td>
+                <%= text_field_tag "object_data[#{k1}][#{k2}]", v2 %>
+              </td>
             </tr>
           <% end %>
         </table>
@@ -37,9 +43,11 @@
       <% end %>
     <% end %>
   </table>
-    <%= label_tag "New commaseparated field" %>
-    <%= text_field_tag :new_field , "", placeholder: "Contact.Address" %>
-    <%= text_field_tag :new_field_value, "", placeholder: "New York" %>
+    <%= label_tag "New comma-separated field and value" %>
+    <div class="row">
+      <%= text_field_tag :new_field , "", placeholder: "Contact.Address" %>
+      <%= text_field_tag :new_field_value, "", placeholder: "New York" %>
+    </div>
 
     <%= submit_tag "Preview" %>
   <% end %>
