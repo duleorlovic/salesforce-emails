@@ -59,3 +59,4 @@ end
 gem "bourbon"
 gem "neat"
 
+gem "letter_opener", :group => :development
