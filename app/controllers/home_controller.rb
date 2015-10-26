@@ -14,12 +14,10 @@ Sincerely,
     end
     if params[:new_field].present?
       def add( p, k, v)
-      byebug
         if v.class == Hash
           if p.has_key?(k) && p[k].class == ActionController::Parameters
             add( p[k], v.keys.first, v.values.first)
           else
-      byebug
             p[k] = add( p, v.keys.first, v.values.first)
           end
         else
