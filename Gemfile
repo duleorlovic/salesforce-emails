@@ -61,3 +61,5 @@ gem "neat"
 
 gem "letter_opener", :group => :development
 gem 'mandrill_dm'
+
+gem 'mustache'

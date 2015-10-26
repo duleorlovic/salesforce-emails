@@ -1,2 +1,56 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
+<aside>
+  <%= form_tag root_path, method: :get do %>
+    <%= text_area_tag :template, params[:template], cols: 50, rows: 10  %>
+
+  <table class="tables">
+    <% @object_data.each do |k1,v1| %>
+      <% if v1.class == String %>
+        <tr>
+          <td>
+          <%= label_tag k1 %>
+        </td>
+        <td>
+          <%= text_field_tag "object_data[#{k1}]", v1 %>
+        </td>
+        </tr>
+      <% elsif v1.respond_to? :each %>
+        <tr>
+          <td>
+              <%= label_tag "#{k1}" %>
+          </td>
+        <td>
+        <table>
+          <% v1.each do |k2, v2| %>
+            <tr>
+              <td>
+              <%= label_tag "#{k2}" %>
+            </td>
+            <td>
+              <%= text_field_tag "object_data[#{k1}][#{k2}]", v2 %>
+            </td>
+            </tr>
+          <% end %>
+        </table>
+      </td>
+    </tr>
+      <% end %>
+    <% end %>
+  </table>
+    <%= label_tag "New commaseparated field" %>
+    <%= text_field_tag :new_field , "", placeholder: "Contact.Address" %>
+    <%= text_field_tag :new_field_value, "", placeholder: "New York" %>
+
+    <%= submit_tag "Preview" %>
+  <% end %>
+</aside>
+
+<article>
+<% if @error %>
+  <h2>
+    <%= @error %>
+  </h2>
+<hr>
+<% end %>
+  <%=raw "#{@result}".gsub "\n", "<br>" %>
+</article>
